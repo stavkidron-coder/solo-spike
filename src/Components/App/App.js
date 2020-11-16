@@ -16,11 +16,26 @@ const SortableList = SortableContainer(({items}) => {
   );
 });
 
+//capture input before hitting send so it doesn't affect the state
+let newItem = '';
+
 class App extends Component {
 
   state = {
     items: ['one', 'two', 'three', 'four', 'five', 'six'],
   };
+
+  handleChange = (event) => {
+    // this.setState({items: [event.target.value]})
+    newItem = event.target.value;
+    console.log('newItem', newItem);
+  }
+
+  submitBtn = () => {
+    this.setState(previousState => ({
+          items: [...previousState.items, newItem]
+      }));
+    }
   
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState(({items}) => ({
@@ -33,6 +48,15 @@ class App extends Component {
       <div className="App">
 
         <h1>Drag and Drop</h1>
+
+        <h3>Add an item</h3>
+        <input
+          placeholder="Add a new item here"
+          onChange={this.handleChange}  
+        />
+        <button onClick={this.submitBtn}>Add</button>
+
+        <h3>Click on a container and drag it to a new position on the list</h3>
       
         <SortableList
           items={this.state.items}

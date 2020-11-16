@@ -21,6 +21,7 @@ let newItem = '';
 
 class App extends Component {
 
+  // Dummy data
   state = {
     items: ['one', 'two', 'three', 'four', 'five', 'six'],
   };
@@ -35,6 +36,7 @@ class App extends Component {
     this.setState(previousState => ({
           items: [...previousState.items, newItem]
       }));
+      this.itemInput.value = ""; // targets the specific input field and empties it
     }
   
   onSortEnd = ({oldIndex, newIndex}) => {
@@ -51,6 +53,7 @@ class App extends Component {
 
         <h3>Add an item</h3>
         <input
+          ref={(ref) => this.itemInput = ref} //empties input field without modifying the state
           placeholder="Add a new item here"
           onChange={this.handleChange}  
         />

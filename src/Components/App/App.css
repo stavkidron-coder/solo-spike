@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.item {
+  border: 1px solid black;
+  width: 100px;
+  margin: auto;
+  text-align: center;
+}
+
+.listContainer {
+  border: 5px solid black;
+  width: 120px;
+  margin: 50px auto;
+  padding: 10px;
+}
